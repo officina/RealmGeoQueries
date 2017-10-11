@@ -9,6 +9,7 @@
 import RealmSwift
 import CoreLocation
 import MapKit
+import MapBox
 
 enum GeoQueriesError: Error {
     case invalidRealm(String)
