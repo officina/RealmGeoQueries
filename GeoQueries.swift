@@ -258,6 +258,25 @@ private extension Array where Element: Object {
     }
     
 }
+//support for mapbox www.mapbox.com
+public extension MGLMapView {
+    
+    // Accessory function to convert MKCoordinateRegion to GeoBox
+    var geoBox: GeoBox {
+        
+        let maxLat = self.visibleCoordinateBounds.ne.latitude
+        let minLat = self.visibleCoordinateBounds.sw.latitude
+        let maxLng = self.visibleCoordinateBounds.ne.longitude
+        let minLng = self.visibleCoordinateBounds.sw.longitude
+        
+        return GeoBox(
+            topLeft: CLLocationCoordinate2D(latitude: maxLat, longitude: minLng),
+            bottomRight: CLLocationCoordinate2D(latitude: minLat, longitude: maxLng)
+        )
+        
+    }
+    
+}
 
 // MARK: - Private core extensions
 private extension RealmCollection where Element: Object {
